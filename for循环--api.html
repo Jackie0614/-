@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js-array</title>
+</head>
+<body>
+    <ul>
+        <li>1 -- 小明</li>
+        <li>2 -- 小花</li>
+        <li>3 -- 小华</li>
+        <li>4 -- 小菜</li>
+        <li>5 -- 小李</li>
+        <li>6 -- 老王</li>
+    </ul>
+    <div id="box">
+        
+    </div>
+    <button type="button" id="btn">排序</button>
+    <script>
+    //把数组按照数字的大小顺序排开
+        var box=document.getElementById("box");
+        var btn=document.getElementById("btn");
+        function arry(){
+       var arr=[[1,"小明"],[2,"小花"],[3,"小华"],[4,"小菜"],[5,"小李"],[6,"老王"]];//创建一个新数组
+       return arr;
+    }
+    //确定数组顺序
+        function  setNew(arr){
+            for(var i=0;i<arr.length;i++){
+                arr[i].sort(function(a,b){
+                    return a[0]-b[0];
+                
+                })
+            
+            }
+            return arr;//返回一个新的数组
+        }
+        //在for循环中创建一个标签，并添加他的子标签，输出页面
+        function btnNew(arr){
+            for(var i=0;i<arr.length;i++){
+                var div=document.createElement("div");//声明创建一个新的html标签
+                div.innerHTML="第"+(i+1)+"名"+"-----"+arr[i][1];
+                box.appendChild(div);//每次追加一个div到“box”这个div下面
+            }
+        }
+        //执行的嵌套函数
+        function hanled(){
+            var sortNew=arry();
+            sortNew=setNew(sortNew);
+            btnNew(sortNew);
+        }
+        //执行按钮事件
+        function btnSet(){
+            btn.onclick=hanled;
+        }
+        btnSet();
+    </script>
+</body>
+</html>
